@@ -12,6 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/binarybirds/swift-http", from: "1.0.0"),
+        .package(url: "https://github.com/WeTransfer/Mocker.git", from: "2.3.0"),
     ],
     targets: [
         .target(name: "DiscourseModel"),
@@ -30,8 +31,12 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "DiscourseKitTests",
-            dependencies: ["DiscourseKit"]
+            name: "DiscourseClientTests",
+            dependencies: [
+                "DiscourseClient",
+                .product(name: "Mocker", package: "Mocker"),
+            ],
+            resources: [.process("Resources")]
         ),
     ]
 )

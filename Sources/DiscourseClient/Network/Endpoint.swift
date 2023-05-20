@@ -38,3 +38,9 @@ public struct Endpoint: Hashable, RawRepresentable, ExpressibleByStringLiteral {
         .init(rawValue: "/c/\(id)/show.json")
     }
 }
+
+extension Endpoint {
+    var paths: [String] {
+        rawValue.split(separator: "/").map { String($0) }
+    }
+}
