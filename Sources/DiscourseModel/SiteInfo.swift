@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct SiteInfo: Codable {
+public struct SiteInfo: Codable, Hashable {
     var categories: [Category]
 }

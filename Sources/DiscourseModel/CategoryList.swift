@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CategoryList: Codable {
+public struct CategoryList: Codable, Hashable {
     public var canCreateCategory: Bool
     public var canCreateTopic: Bool
     public var categories: [Category]
