@@ -17,6 +17,16 @@ class APICollectioin: HttpCodablePipelineCollection {
     let base: HttpUrl
     let client: HttpClient = UrlSessionHttpClient(logLevel: .info)
     
+    // MARK: - HttpCodablePipelineCollection
+
+    func decoder<T>() -> HttpResponseDecoder<T> where T: Decodable {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS'Z'"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return .json(decoder)
+    }
+    
     // MARK: - Site API
     
     func site() async throws -> Site {
@@ -47,6 +57,23 @@ class APICollectioin: HttpCodablePipelineCollection {
         return try await decodableRequest(
             executor: client.dataTask,
             url: url.path(Endpoint.categories.paths),
+            method: .get
+        )
+    }
+    
+    // MARK: - Topic API
+
+    func latest(order: Order? = nil, ascending: Bool? = nil) async throws -> Latest {
+        var url: HttpUrl = base
+        if let order {
+            url = url.query(["order": order.rawValue])
+        }
+        if let ascending {
+            url = url.query(["ascending": ascending.description])
+        }
+        return try await decodableRequest(
+            executor: client.dataTask,
+            url: url.path(Endpoint.latest.paths),
             method: .get
         )
     }

@@ -8,5 +8,5 @@
 import Foundation
 
 public struct Site: Codable, Hashable {
-    var categories: [Category]
+    public var categories: [Category]
 }

@@ -5,7 +5,7 @@ import XCTest
 
 final class ClientAPITests: XCTestCase {
     private let baseURL = URL(string: "https://forums.swift.org")!
-    private let client = Client(baseURL: URL(string: "https://forums.swift.org")!)!
+    private let client = Client(baseURL: URL(string: "https://forums.swift.org")!)
     
     // MARK: - Help functions
     private func registerMock(url: URL, name: String) throws {
@@ -41,5 +41,12 @@ final class ClientAPITests: XCTestCase {
         let originalURL = baseURL.appending(path: Endpoint.categories.rawValue)
         try registerMock(url: originalURL, name: "categories")
         _ = try await client.fetchCategories()
+    }
+    
+    // MARK: - Topic API
+    func testLatestAPI() async throws {
+        let originalURL = baseURL.appending(path: Endpoint.latest.rawValue)
+        try registerMock(url: originalURL, name: "latest")
+        _ = try await client.fetchLatest()
     }
 }
