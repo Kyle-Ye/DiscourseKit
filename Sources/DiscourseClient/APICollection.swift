@@ -10,11 +10,8 @@ import Foundation
 @_implementationOnly import SwiftHttp
 
 class APICollectioin: HttpCodablePipelineCollection {
-    init?(baseURL: URL) {
-        guard let host = baseURL.host() else {
-            return nil
-        }
-        self.base = HttpUrl(host: host, trailingSlashEnabled: false)
+    init(baseURL: URL) {
+        self.base = HttpUrl(host: baseURL.host() ?? "", trailingSlashEnabled: false)
     }
     
     let base: HttpUrl
