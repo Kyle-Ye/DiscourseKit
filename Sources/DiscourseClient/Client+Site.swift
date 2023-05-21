@@ -9,7 +9,11 @@ import DiscourseModel
 import Foundation
 
 extension Client {
-    public func fetchSiteInfo() async throws -> SiteInfo {
-        try await _apiCollection.siteInfo()
+    public func fetchSite() async throws -> Site {
+        try await _apiCollection.site()
+    }
+    
+    public func fetchSiteBasicInfo() async throws -> SiteBasicInfo {
+        try await _apiCollection.siteBasicInfo()
     }
 }

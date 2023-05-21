@@ -13,13 +13,14 @@ public struct Endpoint: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     
     public init(rawValue: String) { self.rawValue = rawValue }
     public init(stringLiteral value: String) { self.init(rawValue: value) }
-
+    
     // MARK: Site
-
+    
     public static let site: Endpoint = "/site.json"
+    public static let siteBasicInfo: Endpoint = "/site/basic-info.json"
     
     // MARK: Other
-
+    
     public static let preAuth: Endpoint = "/session/csrf"
     public static let login: Endpoint = "/session"
     public static let search: Endpoint = "/search"

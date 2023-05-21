@@ -22,7 +22,7 @@ class APICollectioin: HttpCodablePipelineCollection {
     
     // MARK: - Site API
     
-    func siteInfo() async throws -> SiteInfo {
+    func site() async throws -> Site {
         try await decodableRequest(
             executor: client.dataTask,
             url: base.path(Endpoint.site.paths),
@@ -30,12 +30,26 @@ class APICollectioin: HttpCodablePipelineCollection {
         )
     }
     
-    // MARK: - Category API
-    
-    func categories(includeSubcategories _: Bool?) async throws -> CategoryList {
+    func siteBasicInfo() async throws -> SiteBasicInfo {
         try await decodableRequest(
             executor: client.dataTask,
-            url: base.path(Endpoint.categories.paths),
+            url: base.path(Endpoint.siteBasicInfo.paths),
+            method: .get
+        )
+    }
+    
+    // MARK: - Category API
+    
+    func categories(includeSubcategories: Bool?) async throws -> CategoryList {
+        let url: HttpUrl
+        if let includeSubcategories {
+            url = base.query(["include_subcategories": includeSubcategories.description])
+        } else {
+            url = base
+        }
+        return try await decodableRequest(
+            executor: client.dataTask,
+            url: url.path(Endpoint.categories.paths),
             method: .get
         )
     }
