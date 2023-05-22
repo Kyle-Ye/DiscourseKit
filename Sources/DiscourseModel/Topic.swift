@@ -69,3 +69,9 @@ public struct Topic: Codable {
         lastPosterUsername = try container.decode(String.self, forKey: .lastPosterUsername)
     }
 }
+
+extension Topic {
+    public var op: Poster? {
+        posters.first(where: \.isOP)
+    }
+}
