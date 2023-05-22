@@ -57,9 +57,9 @@ class APICollectioin: HttpCodablePipelineCollection {
         )
     }
     
-    // MARK: - Topic API
+    // MARK: - Listing API
 
-    func latest(page: Int, order: Order? = nil, ascending: Bool? = nil) async throws -> Latest {
+    func latest(page: Int, order: Order? = nil, ascending: Bool? = nil) async throws -> Listing {
         var url: HttpUrl = base
         if page != 0 {
             url = url.query("page", page.description)
@@ -73,6 +73,14 @@ class APICollectioin: HttpCodablePipelineCollection {
         return try await decodableRequest(
             executor: client.dataTask,
             url: url.path(Endpoint.latest.paths),
+            method: .get
+        )
+    }
+    
+    func categoryDetail(slug: String, id: Int) async throws -> Listing {
+        try await decodableRequest(
+            executor: client.dataTask,
+            url: base.path(Endpoint.categoryDetail(slug: slug, id: id).paths),
             method: .get
         )
     }

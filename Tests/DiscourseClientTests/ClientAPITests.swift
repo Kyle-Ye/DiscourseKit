@@ -8,6 +8,7 @@ final class ClientAPITests: XCTestCase {
     private let client = Client(baseURL: URL(string: "https://forums.swift.org")!)
     
     // MARK: - Help functions
+
     private func registerMock(url: URL, name: String) throws {
         let mockedData = try Data(contentsOf: Bundle.module.url(forResource: name, withExtension: "json")!)
         let mock = Mock(
@@ -43,7 +44,8 @@ final class ClientAPITests: XCTestCase {
         _ = try await client.fetchCategories()
     }
     
-    // MARK: - Topic API
+    // MARK: - Listing API
+
     func testLatestAPI() async throws {
         let originalURL = baseURL.appending(path: Endpoint.latest.rawValue)
         try registerMock(url: originalURL, name: "latest")

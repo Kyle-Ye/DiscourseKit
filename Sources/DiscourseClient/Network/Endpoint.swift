@@ -57,6 +57,10 @@ extension Endpoint where Value == CategoryList {
 
 // MARK: - Topic
 
-extension Endpoint where Value == Topic {
+extension Endpoint where Value == Listing {
     public static let latest: Endpoint = "/latest.json"
+    
+    public static func categoryDetail(slug: String, id: Int) -> Endpoint {
+        Endpoint(rawValue: "/c/\(slug)/\(id.description).json")
+    }
 }
