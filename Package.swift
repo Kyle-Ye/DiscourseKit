@@ -38,5 +38,9 @@ let package = Package(
             ],
             resources: [.process("Resources")]
         ),
+        .testTarget(
+            name: "DiscourseModelTests",
+            dependencies: ["DiscourseModel"]
+        ),
     ]
 )

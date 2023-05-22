@@ -9,6 +9,7 @@ import Foundation
 
 public struct Topic: Codable {
     public let id: Int
+    public let categoryID: Int
     public let createdAt: Date
     public let title: String
     public let fancyTitle: String
@@ -32,6 +33,7 @@ public struct Topic: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id
+        case categoryID = "category_id"
         case createdAt = "created_at"
         case title
         case fancyTitle = "fancy_title"
@@ -48,22 +50,22 @@ public struct Topic: Codable {
         case lastPosterUsername = "last_poster_username"
     }
     
-    
     public init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.id = try container.decode(Int.self, forKey: Topic.CodingKeys.id)
-        self.createdAt = try container.decode(Date.self, forKey: Topic.CodingKeys.createdAt)
-        self.title = try container.decode(String.self, forKey: Topic.CodingKeys.title)
-        self.fancyTitle = try container.decode(String.self, forKey: Topic.CodingKeys.fancyTitle)
-        self.postsCount = try container.decode(Int.self, forKey: Topic.CodingKeys.postsCount)
-        self.newPosts = try container.decodeIfPresent(Int.self, forKey: Topic.CodingKeys.newPosts) ?? 0
-        self.tags = try container.decode([String].self, forKey: Topic.CodingKeys.tags)
-        self.imageURL = try container.decodeIfPresent(URL.self, forKey: Topic.CodingKeys.imageURL)
-        self.posters = try container.decode([Poster].self, forKey: Topic.CodingKeys.posters)
-        self.pinned = try container.decode(Bool.self, forKey: Topic.CodingKeys.pinned)
-        self.pinnedGlobally = try container.decode(Bool.self, forKey: Topic.CodingKeys.pinnedGlobally)
-        self.lastPostedAt = try container.decode(Date.self, forKey: Topic.CodingKeys.lastPostedAt)
-        self.lastPosterUsername = try container.decode(String.self, forKey: Topic.CodingKeys.lastPosterUsername)
+        id = try container.decode(Int.self, forKey: .id)
+        categoryID = try container.decode(Int.self, forKey: .categoryID)
+        createdAt = try container.decode(Date.self, forKey: .createdAt)
+        title = try container.decode(String.self, forKey: .title)
+        fancyTitle = try container.decode(String.self, forKey: .fancyTitle)
+        postsCount = try container.decode(Int.self, forKey: .postsCount)
+        newPosts = try container.decodeIfPresent(Int.self, forKey: .newPosts) ?? 0
+        tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+        imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
+        posters = try container.decode([Poster].self, forKey: .posters)
+        pinned = try container.decodeIfPresent(Bool.self, forKey: .pinned) ?? false
+        pinnedGlobally = try container.decodeIfPresent(Bool.self, forKey: .pinnedGlobally) ?? false
+        lastPostedAt = try container.decode(Date.self, forKey: .lastPostedAt)
+        lastPosterUsername = try container.decode(String.self, forKey: .lastPosterUsername)
     }
 }

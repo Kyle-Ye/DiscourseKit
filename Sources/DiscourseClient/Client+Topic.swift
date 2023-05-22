@@ -9,7 +9,7 @@ import DiscourseModel
 import Foundation
 
 extension Client {
-    public func fetchLatest() async throws -> Latest {
-        try await _apiCollection.latest()
+    public func fetchLatest(page: Int = 0) async throws -> Latest {
+        try await _apiCollection.latest(page: page)
     }
 }

@@ -9,8 +9,10 @@ import Foundation
 
 public struct Latest: Codable {
     public var topicList: TopicList
+    public var users: [User]
     
     enum CodingKeys: String, CodingKey {
         case topicList = "topic_list"
+        case users
     }
 }

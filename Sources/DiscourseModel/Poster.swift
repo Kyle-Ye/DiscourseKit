@@ -18,3 +18,14 @@ public struct Poster: Codable {
         case userID = "user_id"
     }
 }
+
+extension Poster {
+    /// Check if the poster is the original poster
+    public var isOP: Bool { description.contains("Original Poster") }
+    
+    /// Check if the poster is a frequent poster
+    public var isFP: Bool { description.contains("Frequent Poster") }
+    
+    /// Check if the poster is a most recent poster
+    public var isMRP: Bool { description.contains("Most Recent Poster") }
+}

@@ -20,11 +20,7 @@ class APICollectioin: HttpCodablePipelineCollection {
     // MARK: - HttpCodablePipelineCollection
 
     func decoder<T>() -> HttpResponseDecoder<T> where T: Decodable {
-        let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS'Z'"
-        decoder.dateDecodingStrategy = .formatted(formatter)
-        return .json(decoder)
+        .json(.discourse)
     }
     
     // MARK: - Site API
@@ -63,13 +59,16 @@ class APICollectioin: HttpCodablePipelineCollection {
     
     // MARK: - Topic API
 
-    func latest(order: Order? = nil, ascending: Bool? = nil) async throws -> Latest {
+    func latest(page: Int, order: Order? = nil, ascending: Bool? = nil) async throws -> Latest {
         var url: HttpUrl = base
+        if page != 0 {
+            url = url.query("page", page.description)
+        }
         if let order {
-            url = url.query(["order": order.rawValue])
+            url = url.query("order", order.rawValue)
         }
         if let ascending {
-            url = url.query(["ascending": ascending.description])
+            url = url.query("ascending", ascending.description)
         }
         return try await decodableRequest(
             executor: client.dataTask,
