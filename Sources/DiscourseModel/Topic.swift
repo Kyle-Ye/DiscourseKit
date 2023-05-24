@@ -20,6 +20,7 @@ public struct Topic: Codable {
     public let tags: [String]
     public let imageURL: URL?
     public let posters: [Poster]
+    public let closed: Bool
     
     // MARK: - Pin Info
 
@@ -42,6 +43,7 @@ public struct Topic: Codable {
         case tags
         case imageURL = "image_url"
         case posters
+        case closed
         
         case pinned
         case pinnedGlobally = "pinned_globally"
@@ -63,6 +65,7 @@ public struct Topic: Codable {
         tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
         imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
         posters = try container.decode([Poster].self, forKey: .posters)
+        closed = try container.decodeIfPresent(Bool.self, forKey: .closed) ?? false
         pinned = try container.decodeIfPresent(Bool.self, forKey: .pinned) ?? false
         pinnedGlobally = try container.decodeIfPresent(Bool.self, forKey: .pinnedGlobally) ?? false
         lastPostedAt = try container.decode(Date.self, forKey: .lastPostedAt)
