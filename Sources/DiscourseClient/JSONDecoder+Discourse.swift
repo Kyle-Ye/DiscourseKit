@@ -7,12 +7,19 @@
 
 import Foundation
 
+extension DateFormatter {
+    public static var discourse: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = .gmt
+        return formatter
+    }
+}
+
 extension JSONDecoder {
     public static var discourse: JSONDecoder {
         let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS'Z'"
-        decoder.dateDecodingStrategy = .formatted(formatter)
+        decoder.dateDecodingStrategy = .formatted(.discourse)
         return decoder
     }
 }
