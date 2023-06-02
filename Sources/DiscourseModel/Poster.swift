@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Poster: Codable {
+public struct Poster: Codable, Hashable {
     public let extras: String?
     public let description: String
     public let userID: Int

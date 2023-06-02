@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Topic: Codable {
+public struct Topic: Codable, Hashable {
     public let id: Int
     public let categoryID: Int
     public let createdAt: Date
