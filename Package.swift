@@ -36,7 +36,7 @@ let package = Package(
                 "DiscourseClient",
                 .product(name: "Mocker", package: "Mocker"),
             ],
-            resources: [.process("Resources")]
+            resources: [.copy("Resources")]
         ),
         .testTarget(
             name: "DiscourseModelTests",

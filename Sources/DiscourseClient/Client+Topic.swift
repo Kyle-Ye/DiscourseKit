@@ -9,15 +9,7 @@ import DiscourseModel
 import Foundation
 
 extension Client {
-    public func fetchLatest(page: Int = 0) async throws -> Listing {
-        try await _apiCollection.latest(page: page)
-    }
-
-    public func fetchCategoryDetail(_ category: Category) async throws -> Listing {
-        try await fetchCategoryDetail(slug: category.slug, id: category.id)
-    }
-    
-    public func fetchCategoryDetail(slug: String, id: Int) async throws -> Listing {
-        try await _apiCollection.categoryDetail(slug: slug, id: id)
+    public func fetchTopicDetail(id: Int) async throws -> Topic {
+        try await _apiCollection.topicDetail(id: id)
     }
 }

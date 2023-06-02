@@ -10,13 +10,13 @@ import Foundation
 public struct User: Codable, Hashable {
     public let id: Int
     public let name: String?
-    public let userName: String
+    public let username: String
     public let avatarTemplate: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case userName = "username"
+        case username
         case avatarTemplate = "avatar_template"
     }
 }

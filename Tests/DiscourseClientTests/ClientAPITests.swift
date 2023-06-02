@@ -9,8 +9,11 @@ final class ClientAPITests: XCTestCase {
     
     // MARK: - Help functions
 
-    private func registerMock(url: URL, name: String) throws {
-        let mockedData = try Data(contentsOf: Bundle.module.url(forResource: name, withExtension: "json")!)
+    private func registerMock(endpoint: Endpoint<some Codable>) throws {
+        let baseResourceURL = try XCTUnwrap(Bundle.module.resourceURL)
+        let resourceURL = baseResourceURL.appending(path: "Resources/swift-forums").appending(path: endpoint.rawValue)
+        let mockedData = try Data(contentsOf: resourceURL)
+        let url = baseURL.appending(path: endpoint.rawValue)
         let mock = Mock(
             url: url,
             dataType: .json,
@@ -25,30 +28,34 @@ final class ClientAPITests: XCTestCase {
     // MARK: - Site API
 
     func testSiteAPI() async throws {
-        let originalURL = baseURL.appending(path: Endpoint.site.rawValue)
-        try registerMock(url: originalURL, name: "site")
+        try registerMock(endpoint: Endpoint.site)
         _ = try await client.fetchSite()
     }
     
     func testSiteBasicInfoAPI() async throws {
-        let originalURL = baseURL.appending(path: Endpoint.siteBasicInfo.rawValue)
-        try registerMock(url: originalURL, name: "basic-info")
+        try registerMock(endpoint: Endpoint.siteBasicInfo)
         _ = try await client.fetchSiteBasicInfo()
     }
     
     // MARK: - Category API
 
     func testCategoryAPI() async throws {
-        let originalURL = baseURL.appending(path: Endpoint.categories.rawValue)
-        try registerMock(url: originalURL, name: "categories")
+        try registerMock(endpoint: Endpoint.categories)
         _ = try await client.fetchCategories()
     }
     
     // MARK: - Listing API
 
     func testLatestAPI() async throws {
-        let originalURL = baseURL.appending(path: Endpoint.latest.rawValue)
-        try registerMock(url: originalURL, name: "latest")
+        try registerMock(endpoint: Endpoint.latest)
         _ = try await client.fetchLatest()
+    }
+    
+    // MARK: - Topic API
+
+    func testTopicAPI() async throws {
+        let id = 8
+        try registerMock(endpoint: Endpoint.topicDetail(id: id))
+        _ = try await client.fetchTopicDetail(id: id)
     }
 }

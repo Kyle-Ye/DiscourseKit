@@ -84,4 +84,14 @@ class APICollectioin: HttpCodablePipelineCollection {
             method: .get
         )
     }
+    
+    // MARK: - Topic API
+    
+    func topicDetail(id: Int) async throws -> Topic {
+        try await decodableRequest(
+            executor: client.dataTask,
+            url: base.path(Endpoint.topicDetail(id: id).paths),
+            method: .get
+        )
+    }
 }

@@ -32,6 +32,9 @@ public struct Topic: Codable, Hashable {
     public let lastPostedAt: Date
     public let lastPosterUsername: String
     
+    public let postStream: PostStream?
+    public let details: TopicDetails?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case categoryID = "category_id"
@@ -50,6 +53,9 @@ public struct Topic: Codable, Hashable {
         
         case lastPostedAt = "last_posted_at"
         case lastPosterUsername = "last_poster_username"
+        
+        case postStream = "post_stream"
+        case details
     }
     
     public init(from decoder: Decoder) throws {
@@ -64,12 +70,15 @@ public struct Topic: Codable, Hashable {
         newPosts = try container.decodeIfPresent(Int.self, forKey: .newPosts) ?? 0
         tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
         imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
-        posters = try container.decode([Poster].self, forKey: .posters)
+        posters = try container.decodeIfPresent([Poster].self, forKey: .posters) ?? []
         closed = try container.decodeIfPresent(Bool.self, forKey: .closed) ?? false
         pinned = try container.decodeIfPresent(Bool.self, forKey: .pinned) ?? false
         pinnedGlobally = try container.decodeIfPresent(Bool.self, forKey: .pinnedGlobally) ?? false
         lastPostedAt = try container.decode(Date.self, forKey: .lastPostedAt)
-        lastPosterUsername = try container.decode(String.self, forKey: .lastPosterUsername)
+        let lastPosterUsername = try container.decodeIfPresent(String.self, forKey: .lastPosterUsername)
+        postStream = try container.decodeIfPresent(PostStream.self, forKey: .postStream)
+        details = try container.decodeIfPresent(TopicDetails.self, forKey: .details)
+        self.lastPosterUsername = lastPosterUsername ?? details?.lastPoster.username ?? ""
     }
 }
 
