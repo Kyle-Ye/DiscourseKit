@@ -35,6 +35,8 @@ public struct Topic: Codable, Hashable {
     public let postStream: PostStream?
     public let details: TopicDetails?
     
+    public let replyCount: Int
+    
     enum CodingKeys: String, CodingKey {
         case id
         case categoryID = "category_id"
@@ -56,6 +58,8 @@ public struct Topic: Codable, Hashable {
         
         case postStream = "post_stream"
         case details
+        
+        case replyCount = "reply_count"
     }
     
     public init(from decoder: Decoder) throws {
@@ -79,6 +83,7 @@ public struct Topic: Codable, Hashable {
         postStream = try container.decodeIfPresent(PostStream.self, forKey: .postStream)
         details = try container.decodeIfPresent(TopicDetails.self, forKey: .details)
         self.lastPosterUsername = lastPosterUsername ?? details?.lastPoster.username ?? ""
+        replyCount = try container.decodeIfPresent(Int.self, forKey: .replyCount) ?? 0
     }
 }
 

@@ -25,4 +25,12 @@ public struct Action: Codable, Hashable {
         self.count = try container.decodeIfPresent(Int.self, forKey: CodingKeys.count) ?? 0
         self.canAct = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.canAct) ?? false
     }
+    
+    init(id: Int, count: Int = 0, canAct: Bool = false) {
+        self.id = id
+        self.count = count
+        self.canAct = canAct
+    }
+    
+    public static let like = Action(id: 2)
 }

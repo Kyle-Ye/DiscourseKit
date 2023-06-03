@@ -48,7 +48,15 @@ extension Post {
         return URL(string: avatarString)
     }
     
+    public var likeAction: Action? {
+        actionsSummary.first { $0.id == Action.like.id }
+    }
+    
     public var likeCount: Int {
-        actionsSummary.first { $0.id == 2 }?.count ?? 0
+        likeAction?.count ?? 0
+    }
+    
+    public var likeCanAct: Bool {
+        likeAction?.canAct ?? false
     }
 }
