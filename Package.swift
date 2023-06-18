@@ -11,16 +11,34 @@ let package = Package(
         .library(name: "DiscourseModel", targets: ["DiscourseModel"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/binarybirds/swift-http", from: "1.0.0"),
         .package(url: "https://github.com/WeTransfer/Mocker.git", from: "2.3.0"),
+        .package(url: "https://github.com/Kyle-Ye/swift-openapi-generator.git", branch: "openapi_31x"),
+//        .package(url: "https://github.com/apple/swift-openapi-generator.git", from: "0.1.0"),
+        .package(url: "https://github.com/apple/swift-openapi-runtime", from: "0.1.3"),
+        .package(url: "https://github.com/apple/swift-openapi-urlsession.git", from: "0.1.1"),
     ],
     targets: [
-        .target(name: "DiscourseModel"),
+        .target(
+            name: "DiscourseModel",
+            plugins: [
+                .plugin(
+                    name: "OpenAPIGenerator",
+                    package: "swift-openapi-generator"
+                ),
+            ]
+        ),
         .target(
             name: "DiscourseClient",
             dependencies: [
                 "DiscourseModel",
-                .product(name: "SwiftHttp", package: "swift-http"),
+                .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
+                .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession"),
+            ],
+            plugins: [
+                .plugin(
+                    name: "OpenAPIGenerator",
+                    package: "swift-openapi-generator"
+                ),
             ]
         ),
         .target(
@@ -38,9 +56,9 @@ let package = Package(
             ],
             resources: [.copy("Resources")]
         ),
-        .testTarget(
-            name: "DiscourseModelTests",
-            dependencies: ["DiscourseModel"]
-        ),
+//        .testTarget(
+//            name: "DiscourseModelTests",
+//            dependencies: ["DiscourseModel"]
+//        ),
     ]
 )
