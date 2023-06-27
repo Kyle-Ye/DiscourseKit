@@ -10,6 +10,8 @@ A Swift wrapper around the [Discourse API](https://docs.discourse.org).
 
 TODO
 
+> You can refer to [Forumate](https://github.com/Kyle-Ye/Forumate) project
+
 ## Acknowledgement 
 
 - https://github.com/NSExceptional/DiscourseKit
