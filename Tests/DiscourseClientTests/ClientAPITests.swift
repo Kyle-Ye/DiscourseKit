@@ -49,12 +49,7 @@ final class ClientAPITests: XCTestCase {
 
     func testLatestAPI() async throws {
         try registerMock(endpoint: "/latest.json")
-        do {
-            _ = try await client.listLatestTopics(.init(headers: .init(Api_Key: "", Api_Username: "")))
-        } catch {
-            print(error.localizedDescription)
-            throw error
-        }
+        _ = try await client.listLatestTopics(.init(headers: .init(Api_Key: "", Api_Username: "")))
     }
 //    
 //    // MARK: - Topic API

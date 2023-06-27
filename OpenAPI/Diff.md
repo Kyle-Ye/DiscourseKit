@@ -1,0 +1,2 @@
+- primary_group_id
+  - type: string -> integer
