@@ -30,7 +30,12 @@ final class ClientAPITests: XCTestCase {
 
     func testSiteAPI() async throws {
         try registerMock(endpoint: "/site.json")
-        _ = try await client.getSite(.init())
+        do {
+            _ = try await client.getSite(.init())
+        } catch {
+            print(error.localizedDescription)
+            throw error
+        }
     }
     
     func testSiteBasicInfoAPI() async throws {

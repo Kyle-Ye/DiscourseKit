@@ -4920,9 +4920,6 @@ paths:
                       required:
                       - id
                       - name
-                      - flair_url
-                      - flair_bg_color
-                      - flair_color
                   filters:
                     type: array
                     items: {}
