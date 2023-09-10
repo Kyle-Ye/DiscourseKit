@@ -15,6 +15,7 @@ public struct Post: Codable, Hashable {
     public let createdAt: Date
     public let cooked: String
     public let actionsSummary: [Action]
+    public let actionCode: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,6 +25,7 @@ public struct Post: Codable, Hashable {
         case createdAt = "created_at"
         case cooked
         case actionsSummary = "actions_summary"
+        case actionCode = "action_code"
     }
     
     public init(from decoder: Decoder) throws {
@@ -36,8 +38,11 @@ public struct Post: Codable, Hashable {
         self.createdAt = try container.decode(Date.self, forKey: .createdAt)
         self.cooked = try container.decode(String.self, forKey: .cooked)
         self.actionsSummary = try container.decode([Action].self, forKey: .actionsSummary)
+        self.actionCode = try container.decodeIfPresent(String.self, forKey: .actionCode) ?? ""
     }
 }
+
+// MARK: Avatar
 
 extension Post {
     public func avatar(size: Int) -> URL? {
@@ -47,7 +52,11 @@ extension Post {
         }
         return URL(string: avatarString)
     }
-    
+}
+
+// MARK: - likeAction
+
+extension Post {
     public var likeAction: Action? {
         actionsSummary.first { $0.id == Action.like.id }
     }
@@ -58,5 +67,27 @@ extension Post {
     
     public var likeCanAct: Bool {
         likeAction?.canAct ?? false
+    }
+}
+
+// MARK: - actionCode
+
+extension Post {
+    public enum ActionCode: String {
+        case closed = "closed.enabled"
+        case pinned = "pinned.enabled"
+        case split = "split_topic"
+    }
+    
+    public var isClosed: Bool {
+        actionCode == ActionCode.closed.rawValue
+    }
+    
+    public var isPinned: Bool {
+        actionCode == ActionCode.pinned.rawValue
+    }
+    
+    public var isSplit: Bool {
+        actionCode == ActionCode.split.rawValue
     }
 }
