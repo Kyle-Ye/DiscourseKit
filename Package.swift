@@ -40,7 +40,8 @@ let package = Package(
         ),
         .testTarget(
             name: "DiscourseModelTests",
-            dependencies: ["DiscourseModel"]
+            dependencies: ["DiscourseModel"],
+            resources: [.copy("Resources")]
         ),
     ]
 )
