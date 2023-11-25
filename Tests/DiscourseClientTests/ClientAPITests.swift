@@ -62,7 +62,7 @@ final class ClientAPITests: XCTestCase {
     // MARK: - User API key API
 
     func testUserAPIKeyAPI() async throws {
-        let url = baseURL.appending(path: Endpoint.userAPIKeyHeader().rawValue)
+        let url = baseURL.appending(path: Endpoint.userAPIKeyHeader.rawValue)
         let mock = Mock(
             url: url,
             dataType: .json,

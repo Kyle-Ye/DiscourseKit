@@ -100,7 +100,7 @@ class APICollectioin: HttpCodablePipelineCollection {
     func userAPIKeyHead() async throws -> UserAPINewHeadResponse {
         let headers = try await rawRequest(
             executor: client.dataTask,
-            url: base.path(Endpoint.userAPIKeyHeader().paths),
+            url: base.path(Endpoint.userAPIKeyHeader.paths),
             method: .head
         ).headers
 

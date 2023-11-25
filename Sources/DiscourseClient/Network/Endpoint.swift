@@ -76,7 +76,5 @@ extension Endpoint where Value == Topic {
 // MARK: - User API Key
 
 extension Endpoint where Value == UserAPINewHeadResponse {
-    public static func userAPIKeyHeader() -> Endpoint {
-        Endpoint(rawValue: "/user-api-key/new")
-    }
+    public static let userAPIKeyHeader: Endpoint = "/user-api-key/new"
 }
