@@ -72,3 +72,11 @@ extension Endpoint where Value == Topic {
         Endpoint(rawValue: "/t/\(id.description).json")
     }
 }
+
+// MARK: - User API Key
+
+extension Endpoint where Value == UserAPINewHeadResponse {
+    public static func userAPIKeyHeader() -> Endpoint {
+        Endpoint(rawValue: "/user-api-key/new")
+    }
+}

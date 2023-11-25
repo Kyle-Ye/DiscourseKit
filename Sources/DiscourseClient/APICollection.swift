@@ -94,4 +94,20 @@ class APICollectioin: HttpCodablePipelineCollection {
             method: .get
         )
     }
+
+    // MARK: - User API Keys
+
+    func userAPIKeyHead() async throws -> UserAPINewHeadResponse {
+        let headers = try await rawRequest(
+            executor: client.dataTask,
+            url: base.path(Endpoint.userAPIKeyHeader().paths),
+            method: .head
+        ).headers
+
+        guard let versionString = headers[.init("auth-api-version")],
+              let version = Int(versionString) else {
+            throw HttpError.invalidResponse
+        }
+        return UserAPINewHeadResponse(authAPIVersion: version)
+    }
 }

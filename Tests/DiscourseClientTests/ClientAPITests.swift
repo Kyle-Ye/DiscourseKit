@@ -58,4 +58,22 @@ final class ClientAPITests: XCTestCase {
         try registerMock(endpoint: Endpoint.topicDetail(id: id))
         _ = try await client.fetchTopicDetail(id: id)
     }
+
+    // MARK: - User API key API
+
+    func testUserAPIKeyAPI() async throws {
+        let url = baseURL.appending(path: Endpoint.userAPIKeyHeader().rawValue)
+        let mock = Mock(
+            url: url,
+            dataType: .json,
+            statusCode: 200,
+            data: [
+                .head: Data(),
+            ],
+            additionalHeaders: ["auth-api-version": "4"]
+        )
+        mock.register()
+        let header = try await client.fetchUserAPIKeyHead()
+        XCTAssertEqual(header.authAPIVersion, 4)
+    }
 }
