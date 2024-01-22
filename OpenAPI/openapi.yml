@@ -5248,7 +5248,9 @@ paths:
                         read_restricted:
                           type: boolean
                         permission:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                         notification_level:
                           type: integer
                         topic_template:
