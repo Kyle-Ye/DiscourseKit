@@ -1,5 +1,6 @@
 import DiscourseClient
 import DiscourseModel
+import BundleResource
 import Mocker
 import XCTest
 
@@ -10,7 +11,7 @@ final class ClientAPITests: XCTestCase {
     // MARK: - Help functions
 
     private func registerMock(endpoint: Endpoint<some Codable>) throws {
-        let baseResourceURL = try XCTUnwrap(Bundle.module.resourceURL)
+        let baseResourceURL = try XCTUnwrap(Bundle.resource.resourceURL)
         let resourceURL = baseResourceURL.appending(path: "Resources/swift-forums").appending(path: endpoint.rawValue)
         let mockedData = try Data(contentsOf: resourceURL)
         let url = baseURL.appending(path: endpoint.rawValue)

@@ -1,0 +1,7 @@
+generate:
+  - client
+  - types
+accessModifier: public
+filter:
+  tags:
+    - Site
