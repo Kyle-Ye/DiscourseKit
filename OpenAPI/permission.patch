@@ -1,0 +1,27 @@
+From 8a83c8d166a252b33d01f9cd57322fdef3c64a4b Mon Sep 17 00:00:00 2001
+From: Kyle <kyle201817146@gmail.com>
+Date: Tue, 23 Jan 2024 01:33:24 +0800
+Subject: [PATCH] Update openapi.yml
+
+---
+ OpenAPI/openapi.yml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/OpenAPI/openapi.yml b/OpenAPI/openapi.yml
+index 61a3357..bfb8ecf 100644
+--- a/OpenAPI/openapi.yml
++++ b/OpenAPI/openapi.yml
+@@ -5248,7 +5248,9 @@ paths:
+                         read_restricted:
+                           type: boolean
+                         permission:
+-                          type: integer
++                          type:
++                          - integer
++                          - 'null'
+                         notification_level:
+                           type: integer
+                         topic_template:
+-- 
+2.43.0
+

@@ -4,4 +4,6 @@ Based on https://github.com/discourse/discourse_api_docs/blob/d518e0f3d6f94f4992
 
 ## Diff
 
-None
+1. site.json/categories/permission's type add null
+
+See permission.patch
