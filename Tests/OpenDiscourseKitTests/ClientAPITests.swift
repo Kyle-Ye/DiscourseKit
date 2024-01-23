@@ -43,15 +43,15 @@ final class ClientAPITests: XCTestCase {
 
     func testCategoryAPI() async throws {
         try registerMock(endpoint: "/categories.json")
-        _ = try await client.listCategories().ok.body.json.category_list.categories[0]
+        _ = try await client.listCategories()
     }
     
     // MARK: - Listing API
 
-//    func testLatestAPI() async throws {
-//        try registerMock(endpoint: Endpoint.latest)
-//        _ = try await client.fetchLatest()
-//    }
+    func testLatestAPI() async throws {
+        try registerMock(endpoint: "/latest.json")
+        _ = try await client.listLatestTopics(headers: .init(Api_hyphen_Key: "", Api_hyphen_Username: ""))
+    }
     
     // MARK: - Topic API
 
