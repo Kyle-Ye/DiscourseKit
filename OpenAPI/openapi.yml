@@ -957,7 +957,9 @@ paths:
                             read_restricted:
                               type: boolean
                             permission:
-                              type: integer
+                              type:
+                              - integer
+                              - 'null'
                             notification_level:
                               type: integer
                             can_edit:
@@ -1046,7 +1048,6 @@ paths:
                           - read_restricted
                           - permission
                           - notification_level
-                          - can_edit
                           - topic_template
                           - has_children
                           - sort_order
