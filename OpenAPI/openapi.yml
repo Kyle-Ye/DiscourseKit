@@ -6230,6 +6230,21 @@ paths:
                               type: boolean
                             can_vote:
                               type: boolean
+                            title_is_group:
+                              type: boolean
+                            reply_to_user:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                username:
+                                  type: string
+                                name:
+                                  type: string
+                                avatar_template:
+                                  type: string
+                              required:
+                              - username
+                              - avatar_template
                           required:
                           - id
                           - name
