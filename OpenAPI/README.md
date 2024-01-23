@@ -19,3 +19,7 @@ Because some site may contain extra info here (eg. https://forums.swift.org/site
 ```
 
 See `0002-additionalProperties.patch`
+
+3. categories.json/permission's type add null and can_edit to non-required value
+
+See `0003-categories.patch`
