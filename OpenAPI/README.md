@@ -23,3 +23,7 @@ See `0002-additionalProperties.patch`
 3. categories.json/permission's type add null and can_edit to non-required value
 
 See `0003-categories.patch`
+
+4. primary_group_id: String? -> Int?
+
+See `0004-primary_group_id.patch`
