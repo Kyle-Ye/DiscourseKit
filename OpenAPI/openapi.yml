@@ -1515,7 +1515,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
                                 required:
                                 - extras
@@ -4519,7 +4519,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
                             participants:
                               type: array
@@ -4536,7 +4536,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
   "/topics/private-messages-sent/{username}.json":
     get:
@@ -4681,7 +4681,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
                             participants:
                               type: array
@@ -5803,7 +5803,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
   "/t/{id}/posts.json":
     get:
@@ -7091,7 +7091,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
   "/top.json":
     get:
@@ -7244,7 +7244,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                    - string
+                                    - integer
                                     - 'null'
   "/t/{id}/notifications.json":
     post:
@@ -8325,7 +8325,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                        - string
+                        - integer
                         - 'null'
                       primary_group_name:
                         type:
@@ -9048,7 +9048,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                        - string
+                        - integer
                         - 'null'
                       primary_group_name:
                         type:
@@ -9732,7 +9732,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                        - string
+                        - integer
                         - 'null'
                       primary_group_name:
                         type:
@@ -10658,7 +10658,7 @@ paths:
                     - 'null'
                   primary_group_id:
                     type:
-                    - string
+                    - integer
                     - 'null'
                   badge_count:
                     type: integer
