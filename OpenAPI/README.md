@@ -46,3 +46,7 @@ See `0007-fix_topic_api`
 8. Fix reply_to_post_number type from string to integer
 
 See `0008-Fix-reply_to_post_number-type.patch`
+
+9. Add missing types for post
+
+See `0009-Add-missing-types-for-post.patch`

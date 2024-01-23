@@ -1,0 +1,38 @@
+From 1feb0df4f7257da46d9d4223ab1576fe5e504f98 Mon Sep 17 00:00:00 2001
+From: Kyle <kyle201817146@gmail.com>
+Date: Tue, 23 Jan 2024 23:12:14 +0800
+Subject: [PATCH] Add missing types for post
+
+---
+ OpenAPI/openapi.yml | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/OpenAPI/openapi.yml b/OpenAPI/openapi.yml
+index 2d88773..d4b7839 100644
+--- a/OpenAPI/openapi.yml
++++ b/OpenAPI/openapi.yml
+@@ -6230,6 +6230,21 @@ paths:
+                               type: boolean
+                             can_vote:
+                               type: boolean
++                            title_is_group:
++                              type: boolean
++                            reply_to_user:
++                              type: object
++                              additionalProperties: false
++                              properties:
++                                username:
++                                  type: string
++                                name:
++                                  type: string
++                                avatar_template:
++                                  type: string
++                              required:
++                              - username
++                              - avatar_template
+                           required:
+                           - id
+                           - name
+-- 
+2.43.0
+
