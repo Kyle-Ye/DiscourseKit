@@ -6121,6 +6121,10 @@ paths:
                               type:
                               - string
                               - 'null'
+                            flair_group_id:
+                              type:
+                              - string
+                              - 'null'
                             version:
                               type: integer
                             can_edit:
@@ -6216,6 +6220,16 @@ paths:
                               type: integer
                             reviewable_score_pending_count:
                               type: integer
+                            can_accept_answer:
+                              type: boolean
+                            can_unaccept_answer:
+                              type: boolean
+                            accepted_answer:
+                              type: boolean
+                            topic_accepted_answer:
+                              type: boolean
+                            can_vote:
+                              type: boolean
                           required:
                           - id
                           - name
@@ -6247,7 +6261,6 @@ paths:
                           - can_delete
                           - can_recover
                           - can_wiki
-                          - link_counts
                           - read
                           - user_title
                           - bookmarked
@@ -6263,9 +6276,6 @@ paths:
                           - edit_reason
                           - can_view_edit_history
                           - wiki
-                          - reviewable_id
-                          - reviewable_score_count
-                          - reviewable_score_pending_count
                       stream:
                         type: array
                         items: {}
