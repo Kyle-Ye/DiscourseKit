@@ -4,11 +4,11 @@ Based on https://github.com/discourse/discourse_api_docs/blob/d518e0f3d6f94f4992
 
 ## Diff
 
-1. site.json/categories/permission's type add null
+1. /site.json/categories/permission's type add null
 
 See `0001-permission.patch`
 
-2. site.json/additionalProperties set to true
+2. /site.json/additionalProperties set to true
 
 Because some site may contain extra info here (eg. https://forums.swift.org/site.json contains 3 extra key-values pairs)
 
@@ -20,10 +20,18 @@ Because some site may contain extra info here (eg. https://forums.swift.org/site
 
 See `0002-additionalProperties.patch`
 
-3. categories.json/permission's type add null and can_edit to non-required value
+3. /categories.json/permission's type add null and can_edit to non-required value
 
 See `0003-categories.patch`
 
-4. primary_group_id: String? -> Int?
+4. /primary_group_id: String? -> Int?
 
 See `0004-primary_group_id.patch`
+
+5. /t/{id}.json
+
+See `0005-Title-add-null-type.patch`
+
+6. Update actions_summary
+
+See `0006-Update-actions_summary.patch`

@@ -1,0 +1,27 @@
+From 547718ce76268059a293583ad2064e17a8af70f5 Mon Sep 17 00:00:00 2001
+From: Kyle <kyle201817146@gmail.com>
+Date: Tue, 23 Jan 2024 22:41:54 +0800
+Subject: [PATCH] Title add null type
+
+---
+ OpenAPI/openapi.yml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/OpenAPI/openapi.yml b/OpenAPI/openapi.yml
+index ad45ec8..4188a3d 100644
+--- a/OpenAPI/openapi.yml
++++ b/OpenAPI/openapi.yml
+@@ -6105,7 +6105,9 @@ paths:
+                                   reflection:
+                                     type: boolean
+                                   title:
+-                                    type: string
++                                    type:
++                                    - string
++                                    - 'null'
+                                   clicks:
+                                     type: integer
+                                 required:
+-- 
+2.43.0
+

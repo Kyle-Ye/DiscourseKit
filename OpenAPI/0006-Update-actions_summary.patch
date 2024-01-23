@@ -1,0 +1,168 @@
+From 7619b6ad9243a8779216bd9d3ed44fb2b612bda7 Mon Sep 17 00:00:00 2001
+From: Kyle <kyle201817146@gmail.com>
+Date: Tue, 23 Jan 2024 22:42:51 +0800
+Subject: [PATCH] Update actions_summary
+
+---
+ OpenAPI/openapi.yml | 63 +++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 55 insertions(+), 8 deletions(-)
+
+diff --git a/OpenAPI/openapi.yml b/OpenAPI/openapi.yml
+index 4188a3d..f420ffa 100644
+--- a/OpenAPI/openapi.yml
++++ b/OpenAPI/openapi.yml
+@@ -3184,8 +3184,17 @@ paths:
+                             properties:
+                               id:
+                                 type: integer
++                                description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                              count:
++                                type: integer
++                              acted:
++                                type: boolean
++                              can_undo:
++                                type: boolean
+                               can_act:
+                                 type: boolean
++                            required:
++                            - id
+                         moderator:
+                           type: boolean
+                         admin:
+@@ -3334,11 +3343,17 @@ paths:
+                       properties:
+                         id:
+                           type: integer
++                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                        count:
++                          type: integer
++                        acted:
++                          type: boolean
++                        can_undo:
++                          type: boolean
+                         can_act:
+                           type: boolean
+                       required:
+                       - id
+-                      - can_act
+                   moderator:
+                     type: boolean
+                   admin:
+@@ -3805,11 +3820,17 @@ paths:
+                           properties:
+                             id:
+                               type: integer
++                              description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                            count:
++                              type: integer
++                            acted:
++                              type: boolean
++                            can_undo:
++                              type: boolean
+                             can_act:
+                               type: boolean
+                           required:
+                           - id
+-                          - can_act
+                       moderator:
+                         type: boolean
+                       admin:
+@@ -4082,11 +4103,17 @@ paths:
+                         properties:
+                           id:
+                             type: integer
++                            description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                          count:
++                            type: integer
++                          acted:
++                            type: boolean
++                          can_undo:
++                            type: boolean
+                           can_act:
+                             type: boolean
+                         required:
+                         - id
+-                        - can_act
+                     moderator:
+                       type: boolean
+                     admin:
+@@ -4321,12 +4348,17 @@ paths:
+                       properties:
+                         id:
+                           type: integer
++                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                         count:
+                           type: integer
+                         acted:
+                           type: boolean
+                         can_undo:
+                           type: boolean
++                        can_act:
++                          type: boolean
++                      required:
++                      - id
+                   moderator:
+                     type: boolean
+                   admin:
+@@ -5932,8 +5964,17 @@ paths:
+                                 properties:
+                                   id:
+                                     type: integer
++                                    description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                                  count:
++                                    type: integer
++                                  acted:
++                                    type: boolean
++                                  can_undo:
++                                    type: boolean
+                                   can_act:
+                                     type: boolean
++                                required:
++                                - id
+                             moderator:
+                               type: boolean
+                             admin:
+@@ -6132,11 +6173,17 @@ paths:
+                                 properties:
+                                   id:
+                                     type: integer
++                                    description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
++                                  count:
++                                    type: integer
++                                  acted:
++                                    type: boolean
++                                  can_undo:
++                                    type: boolean
+                                   can_act:
+                                     type: boolean
+                                 required:
+                                 - id
+-                                - can_act
+                             moderator:
+                               type: boolean
+                             admin:
+@@ -6471,17 +6518,17 @@ paths:
+                       properties:
+                         id:
+                           type: integer
++                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                         count:
+                           type: integer
+-                        hidden:
++                        acted:
++                          type: boolean
++                        can_undo:
+                           type: boolean
+                         can_act:
+                           type: boolean
+                       required:
+                       - id
+-                      - count
+-                      - hidden
+-                      - can_act
+                   chunk_size:
+                     type: integer
+                   bookmarked:
+-- 
+2.43.0
+

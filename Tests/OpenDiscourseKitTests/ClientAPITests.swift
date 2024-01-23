@@ -55,9 +55,9 @@ final class ClientAPITests: XCTestCase {
     
     // MARK: - Topic API
 
-//    func testTopicAPI() async throws {
-//        let id = 8
-//        try registerMock(endpoint: Endpoint.topicDetail(id: id))
-//        _ = try await client.fetchTopicDetail(id: id)
-//    }
+    func testTopicAPI() async throws {
+        let id = 8
+        try registerMock(endpoint: "/t/\(id).json")
+        _ = try await client.getTopic(.init(path: .init(id: id.description), headers: .init(Api_hyphen_Key: "", Api_hyphen_Username: "")))
+    }
 }
