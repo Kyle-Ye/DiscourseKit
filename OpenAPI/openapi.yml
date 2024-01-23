@@ -3184,8 +3184,17 @@ paths:
                             properties:
                               id:
                                 type: integer
+                                description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                              count:
+                                type: integer
+                              acted:
+                                type: boolean
+                              can_undo:
+                                type: boolean
                               can_act:
                                 type: boolean
+                            required:
+                            - id
                         moderator:
                           type: boolean
                         admin:
@@ -3334,11 +3343,17 @@ paths:
                       properties:
                         id:
                           type: integer
+                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                        count:
+                          type: integer
+                        acted:
+                          type: boolean
+                        can_undo:
+                          type: boolean
                         can_act:
                           type: boolean
                       required:
                       - id
-                      - can_act
                   moderator:
                     type: boolean
                   admin:
@@ -3805,11 +3820,17 @@ paths:
                           properties:
                             id:
                               type: integer
+                              description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                            count:
+                              type: integer
+                            acted:
+                              type: boolean
+                            can_undo:
+                              type: boolean
                             can_act:
                               type: boolean
                           required:
                           - id
-                          - can_act
                       moderator:
                         type: boolean
                       admin:
@@ -4082,11 +4103,17 @@ paths:
                         properties:
                           id:
                             type: integer
+                            description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                          count:
+                            type: integer
+                          acted:
+                            type: boolean
+                          can_undo:
+                            type: boolean
                           can_act:
                             type: boolean
                         required:
                         - id
-                        - can_act
                     moderator:
                       type: boolean
                     admin:
@@ -4321,12 +4348,17 @@ paths:
                       properties:
                         id:
                           type: integer
+                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
                         count:
                           type: integer
                         acted:
                           type: boolean
                         can_undo:
                           type: boolean
+                        can_act:
+                          type: boolean
+                      required:
+                      - id
                   moderator:
                     type: boolean
                   admin:
@@ -5932,8 +5964,17 @@ paths:
                                 properties:
                                   id:
                                     type: integer
+                                    description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                                  count:
+                                    type: integer
+                                  acted:
+                                    type: boolean
+                                  can_undo:
+                                    type: boolean
                                   can_act:
                                     type: boolean
+                                required:
+                                - id
                             moderator:
                               type: boolean
                             admin:
@@ -6132,11 +6173,17 @@ paths:
                                 properties:
                                   id:
                                     type: integer
+                                    description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
+                                  count:
+                                    type: integer
+                                  acted:
+                                    type: boolean
+                                  can_undo:
+                                    type: boolean
                                   can_act:
                                     type: boolean
                                 required:
                                 - id
-                                - can_act
                             moderator:
                               type: boolean
                             admin:
@@ -6471,17 +6518,17 @@ paths:
                       properties:
                         id:
                           type: integer
+                          description: "`2`: like, `3`, `4`, `6`, `7`, `8`: flag"
                         count:
                           type: integer
-                        hidden:
+                        acted:
+                          type: boolean
+                        can_undo:
                           type: boolean
                         can_act:
                           type: boolean
                       required:
                       - id
-                      - count
-                      - hidden
-                      - can_act
                   chunk_size:
                     type: integer
                   bookmarked:
