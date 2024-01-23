@@ -4,7 +4,7 @@ import BundleResource
 import Mocker
 import XCTest
 
-final class OpenDiscourseKitTests: XCTestCase {
+final class ClientAPITests: XCTestCase {
     private let baseURL = URL(string: "https://forums.swift.org")!
     private let client = Client(serverURL: URL(string: "https://forums.swift.org")!, transport: URLSessionTransport())
     
@@ -30,11 +30,34 @@ final class OpenDiscourseKitTests: XCTestCase {
 
     func testSiteAPI() async throws {
         try registerMock(endpoint: "/site.json")
-        do {
-            _ = try await client.getSite(.init())
-        } catch {
-            print(error.localizedDescription)
-            throw error
-        }
+        _ = try await client.getSite(.init())
     }
+    
+    // TODO: site/basic-info is not provided currently
+    func testSiteBasicInfoAPI() async throws {
+//        try registerMock(endpoint: "/site/basic-info.json")
+//        _ = try await client.fetchSiteBasicInfo()
+    }
+    
+    // MARK: - Category API
+
+    func testCategoryAPI() async throws {
+        try registerMock(endpoint: "/categories.json")
+        _ = try await client.listCategories().ok.body.json.category_list.categories[0]
+    }
+    
+    // MARK: - Listing API
+
+//    func testLatestAPI() async throws {
+//        try registerMock(endpoint: Endpoint.latest)
+//        _ = try await client.fetchLatest()
+//    }
+    
+    // MARK: - Topic API
+
+//    func testTopicAPI() async throws {
+//        let id = 8
+//        try registerMock(endpoint: Endpoint.topicDetail(id: id))
+//        _ = try await client.fetchTopicDetail(id: id)
+//    }
 }
