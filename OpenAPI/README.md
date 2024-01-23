@@ -42,3 +42,7 @@ See `0006-Update-actions_summary.patch`
 - Remove required of link_counts, reviewable_id, reviewable_score_count and reviewable_score_pending_count
 
 See `0007-fix_topic_api`
+
+8. Fix reply_to_post_number type from string to integer
+
+See `0008-Fix-reply_to_post_number-type.patch`

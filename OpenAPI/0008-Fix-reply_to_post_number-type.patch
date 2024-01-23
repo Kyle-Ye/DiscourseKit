@@ -1,0 +1,79 @@
+From 7d700c0985c54466f722529dc43dc4f812d0f1fb Mon Sep 17 00:00:00 2001
+From: Kyle <kyle201817146@gmail.com>
+Date: Tue, 23 Jan 2024 23:05:28 +0800
+Subject: [PATCH] Fix reply_to_post_number type
+
+---
+ OpenAPI/openapi.yml | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/OpenAPI/openapi.yml b/OpenAPI/openapi.yml
+index 8f4f727..2d88773 100644
+--- a/OpenAPI/openapi.yml
++++ b/OpenAPI/openapi.yml
+@@ -3109,7 +3109,7 @@ paths:
+                           type: integer
+                         reply_to_post_number:
+                           type:
+-                          - string
++                          - integer
+                           - 'null'
+                         quote_count:
+                           type: integer
+@@ -3271,7 +3271,7 @@ paths:
+                     type: integer
+                   reply_to_post_number:
+                     type:
+-                    - string
++                    - integer
+                     - 'null'
+                   quote_count:
+                     type: integer
+@@ -3534,7 +3534,7 @@ paths:
+                     type: integer
+                   reply_to_post_number:
+                     type:
+-                    - string
++                    - integer
+                     - 'null'
+                   quote_count:
+                     type: integer
+@@ -3750,7 +3750,7 @@ paths:
+                         type: integer
+                       reply_to_post_number:
+                         type:
+-                        - string
++                        - integer
+                         - 'null'
+                       quote_count:
+                         type: integer
+@@ -4287,7 +4287,7 @@ paths:
+                     type: integer
+                   reply_to_post_number:
+                     type:
+-                    - string
++                    - integer
+                     - 'null'
+                   quote_count:
+                     type: integer
+@@ -5899,7 +5899,7 @@ paths:
+                               type: integer
+                             reply_to_post_number:
+                               type:
+-                              - string
++                              - integer
+                               - 'null'
+                             quote_count:
+                               type: integer
+@@ -6081,7 +6081,7 @@ paths:
+                               type: integer
+                             reply_to_post_number:
+                               type:
+-                              - string
++                              - integer
+                               - 'null'
+                             quote_count:
+                               type: integer
+-- 
+2.43.0
+
