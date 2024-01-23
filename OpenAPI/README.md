@@ -35,3 +35,10 @@ See `0005-Title-add-null-type.patch`
 6. Update actions_summary
 
 See `0006-Update-actions_summary.patch`
+
+7. Fix topic API
+
+- Add flair_group_id & can_accept_answer & can_unaccept_answer & accepted_answer & topic_accepted_answer & can_vote
+- Remove required of link_counts, reviewable_id, reviewable_score_count and reviewable_score_pending_count
+
+See `0007-fix_topic_api`
